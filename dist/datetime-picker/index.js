@@ -3,7 +3,6 @@
 var DatePicker = require('./date-picker');
 
 var _require = require('./utils'),
-    genNumber = _require.genNumber,
     moment = _require.moment;
 
 Component({
@@ -79,41 +78,31 @@ Component({
       this._indexs = selected;
     },
     updatePicker: function updatePicker() {
+      var _this2 = this;
+
       var updateData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
       var _updateData = {};
 
-      for (var _iterator = updateData, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-        var _ref2;
-
-        if (_isArray) {
-          if (_i >= _iterator.length) break;
-          _ref2 = _iterator[_i++];
-        } else {
-          _i = _iterator.next();
-          if (_i.done) break;
-          _ref2 = _i.value;
-        }
-
-        var _ref = _ref2;
+      updateData.forEach(function (_ref) {
         var col = _ref.col,
             index = _ref.index,
             data = _ref.data;
 
-        if (~index && this._indexs[col] !== index || col === 0) {
+        if (~index && _this2._indexs[col] !== index || col === 0) {
           _updateData['selected[' + col + ']'] = index; // 更新索引
-          this._indexs[col] = index;
+          _this2._indexs[col] = index;
         }
 
         if (data) {
           _updateData['dataList[' + col + ']'] = data;
         }
-      }
+      });
 
       this.setData(_updateData);
     },
     updateDate: function updateDate(date) {
-      var _this2 = this;
+      var _this3 = this;
 
       var _picker$getData2 = this.picker.getData(date),
           dataList = _picker$getData2.dataList,
@@ -123,20 +112,20 @@ Component({
 
       // 好像必须要等到 datalist 完成
       this.setData({ dataList: dataList }, function () {
-        _this2.setData({
+        _this3.setData({
           selected: selected,
-          text: _this2.getFormatStr()
+          text: _this3.getFormatStr()
         });
       });
     },
     getFormatStr: function getFormatStr() {
-      var _this3 = this;
+      var _this4 = this;
 
       var date = new Date();
       ['FullYear', 'Month', 'Date', 'Hours', 'Minutes', 'Seconds'].forEach(function (key, index) {
-        var value = _this3.data.dataList[index][_this3._indexs[index]];
+        var value = _this4.data.dataList[index][_this4._indexs[index]];
         if (key === 'Month') {
-          value = +_this3.data.dataList[index][_this3._indexs[index]] - 1;
+          value = +_this4.data.dataList[index][_this4._indexs[index]] - 1;
         }
         date['set' + key](+value);
       });

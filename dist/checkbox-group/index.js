@@ -21,7 +21,7 @@ Component({
       // 把checkbox标记为在group中，设置不同样式
       var elements = this.getRelationNodes(childPath);
 
-      elements.forEach(function (checkbox, index) {
+      elements.forEach(function (checkbox) {
         checkbox.updateData({ isInGroup: true });
       });
     }

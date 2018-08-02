@@ -7,29 +7,33 @@
     text-align: center;
     box-sizing: border-box;
     vertical-align: middle;
-    font-size: 12px;
-    border: 1rpx solid #999;
+    font-size: 16px;
+    border: 1rpx solid #acacac;
   }
 
   .zan-stepper {
     &__minus {
+      color: #bebebe;
       border-right: none;
-      border-radius: 2px 0 0 2px;
+      border-radius: 6px 0 0 6px;
     }
 
     &__text {
-      border: 1rpx solid #999;
+      color: #111111;
+      border: 1rpx solid #acacac;
       display: inline-block;
       text-align: center;
+      box-sizing: border-box;
       vertical-align: middle;
       /* 重置 input 默认样式 */
       min-height: auto;
-      font-size: 12px;
+      font-size: 16px;
     }
 
     &__plus {
+      color: #bebebe;
       border-left: none;
-      border-radius: 0 2px 2px 0;
+      border-radius: 0 6px 6px 0;
     }
 
     &--disabled {
@@ -41,40 +45,40 @@
 
   &--small {
     view {
-      min-width: 36px;
-      line-height: 18px;
+      min-width: 25px;
+      line-height: 29rpx;
     }
 
     .zan-stepper__text {
-      width: 36px;
-      line-height: 28px;
-      height: 28px;
+      width: 48px;
+      line-height: 52rpx;
+      height: 52rpx;
     }
   }
 
   &--middle {
     view {
-      min-width: 40px;
-      line-height: 20px;
+      min-width: 27px;
+      line-height: 32rpx;
     }
 
     .zan-stepper__text {
-      width: 40px;
-      line-height: 30px;
-      height: 30px;
+      width: 50px;
+      line-height: 56rpx;
+      height: 56rpx;
     }
   }
 
   &--large {
     view {
-      min-width: 44px;
-      line-height: 22px;
+      min-width: 29px;
+      line-height: 36rpx;
     }
 
     .zan-stepper__text {
-      width: 44px;
-      line-height: 32px;
-      height: 32px;
+      width: 52px;
+      line-height: 60rpx;
+      height: 60rpx;
     }
   }
 }

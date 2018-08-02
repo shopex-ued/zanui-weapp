@@ -9,7 +9,7 @@ Component({
     text: {
       type: String,
       value: '',
-      observer: function observer(newVal) {
+      observer: function observer() {
         this.setData({}, this._init);
       }
     },

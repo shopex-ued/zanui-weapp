@@ -2,7 +2,6 @@
 
 module.exports = Behavior({
   properties: {
-    loading: Boolean,
     // 在自定义组件中，无法与外界的 form 组件联动，暂时不开放
     // formType: String,
     openType: String,
@@ -32,7 +31,10 @@ module.exports = Behavior({
     sendMessageTitle: String,
     sendMessagePath: String,
     sendMessageImg: String,
-    showMessageCard: String
+    showMessageCard: {
+      type: Boolean,
+      value: false
+    }
   },
   methods: {
     bindgetuserinfo: function bindgetuserinfo() {

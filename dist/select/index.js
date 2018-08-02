@@ -21,8 +21,10 @@ Component({
   },
 
   methods: {
-    handleSelectChange: function handleSelectChange(e) {
-      var value = e.detail.value;
+    handleSelectChange: function handleSelectChange(_ref) {
+      var detail = _ref.detail;
+      var value = detail.value;
+
       this.triggerEvent('change', { value: value });
     }
   }

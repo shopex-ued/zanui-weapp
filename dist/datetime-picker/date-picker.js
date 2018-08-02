@@ -30,6 +30,7 @@ module.exports = function () {
   };
 
   DatePicker.prototype.lastDay = function lastDay(year, month) {
+    /* eslint-disable function-paren-newline */
     return month !== 12 ? new Date(new Date(year + '/' + (month + 1) + '/1').getTime() - 24 * 60 * 60 * 1000).getDate() : 31;
   };
 
@@ -72,7 +73,7 @@ module.exports = function () {
     }
   };
 
-  DatePicker.prototype._updateYear = function _updateYear(col, index, cb) {
+  DatePicker.prototype._updateYear = function _updateYear(col, index) {
     var years = this._dataList[col];
     var year = years[index];
 

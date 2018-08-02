@@ -33,8 +33,8 @@ Component({
       var _ref$currentTarget = _ref.currentTarget,
           currentTarget = _ref$currentTarget === undefined ? {} : _ref$currentTarget;
 
-      var dataset = currentTarget.dataset || {};
-      var index = dataset.index;
+      var _ref2 = currentTarget.dataset || {},
+          index = _ref2.index;
 
       this.triggerEvent('actionclick', { index: index });
     }
