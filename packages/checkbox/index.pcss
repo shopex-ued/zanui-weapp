@@ -1,40 +1,21 @@
-.zan-checkbox {
-  display: inline-block;
-  padding: 0 10px;
-  font-size: 14px;
-
-  &__item {
-    display: block;
-    margin-top: 10px;
-  }
-
-  &__list-item {
-    display: block;
-    padding: 10px 10px 10px 0;
-    margin-left: 10px;
-    border-bottom: 1px solid #e5e5e5;
-
-    .zan-checkbox__icon {
-      float: right;
+.i-checkbox {
+  &-cell {
+    padding: 0;
+    &::after {
+      display: block;
     }
   }
-
-  &__icon {
-    display: inline-flex;
-    align-items: center;
-    color: #aaa;
-
-    &.zan-checkbox--checked {
-      color: #06bf04;
-    }
-
-    &.zan-checkbox--disabled {
-      color: #e5e5e5;
-    }
+  &-checkbox-left {
+    float: left;
   }
-
-  &__label {
+  &-checkbox-right {
+    float: right;
+  }
+  &-radio{
+    vertical-align: middle;
+  }
+  &-title{
     display: inline-block;
-    margin-left: 10px;
+    vertical-align: middle;
   }
 }

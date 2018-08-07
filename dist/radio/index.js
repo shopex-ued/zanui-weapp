@@ -1,33 +1,64 @@
 'use strict';
 
+var prefixCls = 'i-radio';
+
 Component({
-  behaviors: ['wx://form-field'],
-
-  externalClasses: ['radio-class', 'radio-color'],
-
+  externalClasses: ['i-class'],
+  relations: {
+    '../radio-group/index': {
+      type: 'parent'
+    }
+  },
   properties: {
-    items: Array,
-    type: String
+    value: {
+      type: String,
+      value: ''
+    },
+    checked: {
+      type: Boolean,
+      value: false
+    },
+    disabled: {
+      type: Boolean,
+      value: false
+    },
+    color: {
+      type: String,
+      value: '#d91e18'
+    },
+    position: {
+      type: String,
+      value: 'left',
+      observer: 'setPosition'
+    },
+    valueSlot: {
+      type: Boolean,
+      value: false
+    }
+  },
+  data: {
+    checked: true,
+    positionCls: prefixCls + '-radio-left'
+  },
+  attached: function attached() {
+    this.setPosition();
   },
 
   methods: {
-    radioChange: function radioChange(e) {
-      this.selectItem(e.detail.value);
-      this.triggerEvent('change', e);
+    changeCurrent: function changeCurrent(current) {
+      this.setData({ checked: current });
     },
-    selectItem: function selectItem(value) {
-      var items = this.data.items;
+    radioChange: function radioChange() {
+      if (this.data.disabled) return;
+      var item = { current: !this.data.checked, value: this.data.value };
+      var parent = this.getRelationNodes('../radio-group/index')[0];
 
-
-      items.forEach(function (item) {
-        if (item.name === value) {
-          item.checked = true;
-        } else {
-          item.checked = false;
-        }
+      parent ? parent.emitEvent(item) : this.triggerEvent('change', item);
+    },
+    setPosition: function setPosition() {
+      this.setData({
+        positionCls: this.data.position.indexOf('left') !== -1 ? prefixCls + '-radio-left' : prefixCls + '-radio-right'
       });
-
-      this.setData({ items: items });
     }
   }
 });

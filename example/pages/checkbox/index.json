@@ -5,6 +5,7 @@
     "zan-checkbox": "../../dist/checkbox/index",
     "zan-panel": "../../dist/panel/index",
     "zan-cell": "../../dist/cell/index",
+    "zan-button": "../../dist/btn/index",
     "doc-page": "../../components/doc-page/index"
   }
 }

@@ -50,6 +50,9 @@ export default {
       }, {
         name: 'Loadmore 加载更多',
         path: '/pages/loadmore/index'
+      }, {
+        name: 'Divider 分隔线',
+        path: '/pages/divider/index'
       }
     ]
   },

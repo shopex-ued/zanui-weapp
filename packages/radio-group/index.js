@@ -1,7 +1,7 @@
 Component({
   externalClasses: ['i-class'],
   relations: {
-    '../checkbox/index': {
+    '../radio/index': {
       type: 'child',
       linked() {
         this.changeCurrent();
@@ -16,18 +16,18 @@ Component({
   },
   properties: {
     current: {
-      type: Array,
-      value: [],
+      type: String,
+      value: '',
       observer: 'changeCurrent'
     },
   },
   methods: {
     changeCurrent(val = this.data.current) {
-      let items = this.getRelationNodes('../checkbox/index');
+      let items = this.getRelationNodes('../radio/index');
       const len = items.length;
       if (len > 0) {
         items.forEach((item) => {
-          item.changeCurrent(val.indexOf(item.data.value) !== -1);
+          item.changeCurrent(val === item.data.value);
         });
       }
     },

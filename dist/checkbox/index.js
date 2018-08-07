@@ -1,44 +1,63 @@
 'use strict';
 
-var _relations;
-
-var CHECKBOX_GROUP_PATH = '../checkbox-group/index';
+var prefixCls = 'i-checkbox';
 
 Component({
-  externalClasses: ['checkbox-class'],
-  relations: (_relations = {}, _relations[CHECKBOX_GROUP_PATH] = {
-    type: 'parent'
-  }, _relations),
-
+  externalClasses: ['i-class'],
+  relations: {
+    '../checkbox-group/index': {
+      type: 'parent'
+    }
+  },
   properties: {
-    checked: Boolean,
-    disabled: Boolean,
-    isInGroup: Boolean,
-    labelDisabled: Boolean,
-    type: String
+    value: {
+      type: String,
+      value: ''
+    },
+    checked: {
+      type: Boolean,
+      value: false
+    },
+    disabled: {
+      type: Boolean,
+      value: false
+    },
+    color: {
+      type: String,
+      value: '#d91e18'
+    },
+    position: {
+      type: String,
+      value: 'left',
+      observer: 'setPosition'
+    },
+    valueSlot: {
+      type: Boolean,
+      value: false
+    }
   },
-
-  data: function data() {
-    return {
-      isInGroup: false,
-      isInCell: false
-    };
+  data: {
+    checked: true,
+    positionCls: prefixCls + '-checkbox-left'
   },
-
+  attached: function attached() {
+    this.setPosition();
+  },
 
   methods: {
-    handleClick: function handleClick() {
-      if (this.data.disabled) {
-        return;
-      }
-
-      var checked = !this.data.checked;
-
-      this.triggerEvent('change', checked);
-      this.setData({ checked: checked });
+    changeCurrent: function changeCurrent(current) {
+      this.setData({ checked: current });
     },
-    updateData: function updateData(data) {
-      this.setData(data);
+    checkboxChange: function checkboxChange() {
+      if (this.data.disabled) return;
+      var item = { current: !this.data.checked, value: this.data.value };
+      var parent = this.getRelationNodes('../checkbox-group/index')[0];
+      parent ? parent.emitEvent(item) : this.triggerEvent('change', item);
+    },
+    setPosition: function setPosition() {
+      this.setData({
+        positionCls: this.data.position.indexOf('left') !== -1 ? prefixCls + '-checkbox-left' : prefixCls + '-checkbox-right'
+      });
     }
   }
 });

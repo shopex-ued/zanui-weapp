@@ -1,4 +1,4 @@
-<view class="zan-loadmore">
+<view class="loadmore-class zan-loadmore">
   <block wx:if="{{ type === 'loading' }}">
     <view class="zan-loading"></view>
     <view class="zan-loadmore__tips">加载中...</view>
@@ -6,6 +6,9 @@
   <block wx:elif="{{ type === 'text' }}">
     <view class="zan-loadmore__line"></view>
     <text wx:if="{{ text }}" class="zan-loadmore__text">{{ text }}</text>
+    <view wx:if="{{ customContent }}" class="zan-loadmore__content">
+      <slot></slot>
+    </view>
     <view wx:else class="zan-loadmore__dot"></view>
     <view class="zan-loadmore__line"></view>
   </block>

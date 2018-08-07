@@ -1,4 +1,6 @@
 Component({
+  externalClasses: ['loadmore-class'],
+
   properties: {
     type: {
       type: String,
@@ -7,6 +9,10 @@ Component({
     text: {
       type: String,
       value: ''
+    },
+    customContent: {
+      type: Boolean,
+      value: false
     }
   }
 });

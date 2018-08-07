@@ -3,7 +3,7 @@
 Component({
   externalClasses: ['i-class'],
   relations: {
-    '../checkbox/index': {
+    '../radio/index': {
       type: 'child',
       linked: function linked() {
         this.changeCurrent();
@@ -18,8 +18,8 @@ Component({
   },
   properties: {
     current: {
-      type: Array,
-      value: [],
+      type: String,
+      value: '',
       observer: 'changeCurrent'
     }
   },
@@ -27,11 +27,11 @@ Component({
     changeCurrent: function changeCurrent() {
       var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data.current;
 
-      var items = this.getRelationNodes('../checkbox/index');
+      var items = this.getRelationNodes('../radio/index');
       var len = items.length;
       if (len > 0) {
         items.forEach(function (item) {
-          item.changeCurrent(val.indexOf(item.data.value) !== -1);
+          item.changeCurrent(val === item.data.value);
         });
       }
     },

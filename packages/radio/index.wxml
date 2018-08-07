@@ -1,28 +1,11 @@
-<radio-group
-  class="zan-radio radio-class"
-  bindchange="radioChange"
-  wx:if="{{ items && items.length }}"
->
-  <label
-    class="zan-radio__label {{ type === 'list' ? 'zan-radio__list-item' : 'zan-radio__item'}}"
-    wx:for="{{ items }}"
-    wx:key="{{ item.value }}"
-    wx:for-item="item"
-    wx:for-index="index"
-  >
-    <view class="zan-radio__icon-wrap">
-      <view class="zan-radio__icon {{ item.disabled ? 'zan-radio--disabled' : '' }} {{ item.checked ? 'zan-radio--checked radio-color' : '' }}">
-        <view class="zan-radio__icon-inside"></view>
-      </view>
-      <radio
-        class="zan-radio__origin"
-        value="{{ item.value }}"
-        checked="{{ item.checked }}"
-        disabled="{{ item.disabled }}"
-      />
-    </view>
-    <view class="zan-radio__name">
-      {{item.name}}
-    </view>
-  </label>
-</radio-group>
+<zan-cell cell-class="i-radio-cell">
+  <view class="radio-class i-radio" catchtap="radioChange">
+    <label>
+      <radio value="{{value}}" checked="{{checked}}" color="{{checked?color:''}}" disabled="{{disabled}}" class="i-radio-radio {{positionCls}}" />
+      <view class="i-radio-title" wx:if="{{ !valueSlot }}">{{value}}</view>
+    </label>
+    <block wx:if="{{ valueSlot }}">
+      <slot></slot>
+    </block>
+  </view>
+</zan-cell>
