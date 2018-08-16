@@ -37,6 +37,7 @@ Component({
   },
 
   data: {
+    titleWidth: 'auto',
     showBorder: true
   },
 
@@ -71,6 +72,14 @@ Component({
 
       this.setData({
         showBorder: showBorder
+      });
+    },
+
+
+    // 设置统一的title区域宽度
+    setTitleWidth: function setTitleWidth(titleWidth) {
+      this.setData({
+        titleWidth: titleWidth + 'px'
       });
     }
   }

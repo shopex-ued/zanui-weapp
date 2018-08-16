@@ -1,4 +1,4 @@
-<view 
+<view
   catchtap="cellTap"
   class="cell-class zan-cell {{ isLastCell ? 'last-cell' : '' }} {{ isLink ? 'zan-cell--access' : '' }} {{  noBorder ? 'no-border' : ''}}"
 >

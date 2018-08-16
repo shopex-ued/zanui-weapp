@@ -5,6 +5,7 @@
   <view
     slot="icon"
     wx:if="{{ title }}"
+    style="width: {{ titleWidth }}"
     class="zan-cell__hd zan-field__title">
     {{ title }}
   </view>

@@ -29,8 +29,7 @@
     "pages/tree-select/index",
     "pages/select/index",
     "pages/datetime/index",
-    "pages/loadmore/index",
-    "pages/divider/index"
+    "pages/loadmore/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FAFAFA",
